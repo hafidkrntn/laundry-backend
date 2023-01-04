@@ -35,6 +35,5 @@ const transaksiSchema = mongoose.Schema(
 );
 
 const Transaksi = mongoose.model("Transaksi", transaksiSchema);
-console.log(transaksiSchema);
 
 export default Transaksi;

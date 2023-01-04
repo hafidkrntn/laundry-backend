@@ -18,7 +18,7 @@ const AdminSchema = mongoose.Schema(
 );
 
 AdminSchema.statics.findByCredentials = async function (username, password) {
-  const admin = await Admin.findOne({ email });
+  const admin = await Admin.findOne({ username });
   if (!admin) throw new Error("invalid credentials");
 };
 
@@ -41,6 +41,18 @@ AdminSchema.pre("save", function (next) {
     });
   });
 });
+
+AdminSchema.statics.login = async function (username, password) {
+  const admin = await this.findOne({ username });
+  if (admin) {
+    const auth = await bcrypt.compare(password, admin.password);
+    if (auth) {
+      return admin;
+    }
+    throw Error("incorrect password");
+  }
+  throw Error("incorrect username");
+};
 
 const Admin = mongoose.model("Admin", AdminSchema);
 
