@@ -4,6 +4,7 @@
   "description": "",
   "type": "module",
   "main": "index.js",
+  "engines": {"node": "18.x"},
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
