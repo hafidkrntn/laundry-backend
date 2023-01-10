@@ -1,15 +1,14 @@
 {
     "version": 2,
+    "name": "laundryporis",
     "builds": [
-        {
-            "src": "./server.js",
-            "use": "@vercel/node"
-        }
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
+      { "src": "/(.*)", "dest": "server.js" }
     ]
-}
+  }
+  
