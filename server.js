@@ -16,12 +16,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(errorHandler);
-app.use("/auth", loginRoute);
-app.use("/users", usersRoute);
-app.use("/datas", datasRoute);
-app.use("/transaksi", transaksiRoute);
-app.use("/export", excelRoute);
-app.use("/download", pdfRoute);
+app.use("/api/auth", loginRoute);
+app.use("/api/users", usersRoute);
+app.use("/api/datas", datasRoute);
+app.use("/api/transaksi", transaksiRoute);
+app.use("/api/export", excelRoute);
+app.use("/api/download", pdfRoute);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running 5000 ..");
