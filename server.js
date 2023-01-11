@@ -23,6 +23,6 @@ app.use("/api/transaksi", transaksiRoute);
 app.use("/api/export", excelRoute);
 app.use("/api/download", pdfRoute);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("Server is running 5000 ..");
 });
