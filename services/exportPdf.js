@@ -1,6 +1,7 @@
 import express from "express";
 import PDFDocument from "pdfkit-table";
 import fs from "fs";
+import path from "path";
 import Transaksi from "../models/transaksiModel.js";
 
 const router = express.Router();
@@ -9,6 +10,7 @@ router.get("/pdf/:id", async (req, res) => {
   const data = await Transaksi.findById(req.params.id);
   const date = new Date(data.createdAt).toLocaleDateString();
   const doc = new PDFDocument({ size: "A4" });
+  const file = path.join(process.cwd(), "/invoice.pdf");
 
   doc.pipe(fs.createWriteStream("invoice.pdf"));
 
@@ -65,7 +67,11 @@ router.get("/pdf/:id", async (req, res) => {
   // Finalize the PDF and end the stream
   doc.end();
 
-  res.download(`${process.cwd()}/invoice.pdf`);
+  if (fs.existsSync(file)) {
+    res.download(file);
+  } else {
+    res.status(404).send("File not found");
+  }
 });
 
 export default router;
