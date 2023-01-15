@@ -24,9 +24,6 @@
     "path": "^0.12.7",
     "pdfkit": "^0.13.0",
     "pdfkit-table": "^0.1.99",
-    "sequelize": "^6.25.8",
-    "set-value": "^4.1.0",
-    "socket.io": "^4.5.4",
-    "update": "^0.7.4"
+    "set-value": "^4.1.0"
   }
 }
