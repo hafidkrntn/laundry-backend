@@ -40,7 +40,7 @@ router.get("/datalaundry/excel", async (req, res) => {
 router.get("/transaksi/excel", async (req, res) => {
   const data = await Transaksi.find({
     attributes: [
-      "tanggal_masuk",
+      "createdAt",
       "customer",
       "paket",
       "berat",
@@ -51,7 +51,7 @@ router.get("/transaksi/excel", async (req, res) => {
   const workbook = new Excel.Workbook();
   const worksheet = workbook.addWorksheet("Data Transaksi");
   worksheet.columns = [
-    { header: "Tanggal Masuk", key: "tanggal_masuk", width: 15 },
+    { header: "Tanggal Masuk", key: "createdAt", width: 15 },
     { header: "Nama Customer", key: "customer", width: 18 },
     { header: "Paket", key: "paket", width: 11 },
     { header: "Harga", key: "harga", width: 12 },
@@ -62,7 +62,7 @@ router.get("/transaksi/excel", async (req, res) => {
 
   data.map((value, idx) => {
     worksheet.addRow({
-      tanggal_masuk: value.tanggal_masuk,
+      tanggal_masuk: value.createdAt,
       customer: value.customer,
       paket: value.paket,
       harga: value.harga,
