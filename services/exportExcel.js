@@ -62,7 +62,7 @@ router.get("/transaksi/excel", async (req, res) => {
 
   data.map((value, idx) => {
     worksheet.addRow({
-      tanggal_masuk: value.createdAt,
+      createdAt: value.createdAt,
       customer: value.customer,
       paket: value.paket,
       harga: value.harga,
